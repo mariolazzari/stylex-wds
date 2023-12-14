@@ -1,16 +1,7 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
- */
-
-import stylex from '@stylexjs/stylex';
-import { globalTokens as $, spacing, text } from './globalTokens.stylex';
-import { colors } from '@stylexjs/open-props/lib/colors.stylex';
-import { tokens } from './CardTokens.stylex';
+import stylex from "@stylexjs/stylex";
+import { globalTokens as $, spacing, text } from "./globalTokens.stylex";
+import { colors } from "@stylexjs/open-props/lib/colors.stylex";
+import { tokens } from "./CardTokens.stylex";
 
 type Props = Readonly<{
   title: string;
@@ -34,43 +25,43 @@ export default function Card({ title, body, href }: Props) {
   );
 }
 
-type TMobile = '@media (max-width: 700px)';
+type TMobile = "@media (max-width: 700px)";
 
-const MOBILE: TMobile = '@media (max-width: 700px)' as TMobile;
-const REDUCE_MOTION = '@media (prefers-reduced-motion: reduce)' as const;
+const MOBILE: TMobile = "@media (max-width: 700px)" as TMobile;
+const REDUCE_MOTION = "@media (prefers-reduced-motion: reduce)" as const;
 
 const bgDefault = `rgba(${$.cardR}, ${$.cardG}, ${$.cardB}, 0)` as const;
 
 const styles = stylex.create({
   link: {
     display: {
-      default: 'flex',
-      [MOBILE]: 'block',
+      default: "flex",
+      [MOBILE]: "block",
     },
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'column',
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flexDirection: "column",
     borderRadius: spacing.xs,
     backgroundColor: {
       default: bgDefault,
-      ':hover': `rgba(${$.cardR}, ${$.cardG}, ${$.cardB}, 0.1)`,
+      ":hover": `rgba(${$.cardR}, ${$.cardG}, ${$.cardB}, 0.1)`,
     },
     borderWidth: 1,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderColor: {
       default: `rgba(${$.cardBorderR}, ${$.cardBorderG}, ${$.cardBorderB}, 0)`,
-      ':hover': `rgba(${$.cardBorderR}, ${$.cardBorderG}, ${$.cardBorderB}, 0.1)`,
+      ":hover": `rgba(${$.cardBorderR}, ${$.cardBorderG}, ${$.cardBorderB}, 0.1)`,
     },
-    color: 'inherit',
+    color: "inherit",
     fontFamily: $.fontSans,
     padding: spacing.sm,
-    transitionProperty: 'background-color, border-color',
-    transitionDuration: '400ms',
-    textAlign: 'center',
-    textDecoration: 'none',
+    transitionProperty: "background-color, border-color",
+    transitionDuration: "400ms",
+    textAlign: "center",
+    textDecoration: "none",
     [tokens.arrowTransform]: {
-      default: 'translateX(0)',
-      ':hover': 'translateX(4px)',
+      default: "translateX(0)",
+      ":hover": "translateX(4px)",
     },
   },
   h2: {
@@ -83,21 +74,21 @@ const styles = stylex.create({
     },
   },
   span: {
-    display: 'inline-block',
-    transitionProperty: 'transform',
+    display: "inline-block",
+    transitionProperty: "transform",
     transform: tokens.arrowTransform,
     transitionDuration: {
-      default: '200ms',
-      [REDUCE_MOTION]: '0s',
+      default: "200ms",
+      [REDUCE_MOTION]: "0s",
     },
   },
   p: {
     margin: 0,
     opacity: 0.6,
     fontSize: text.p,
-    textWrap: 'balance',
+    textWrap: "balance",
     lineHeight: 1.5,
-    maxWidth: '30ch',
+    maxWidth: "30ch",
   },
   color: (color: string) => ({ color }),
   width: (width: string) => ({ width }),
